@@ -5,7 +5,7 @@ class Company {
   public $tot_employees = 0;
   public static $avg_wage = 1500;
   public static $annualExpense;
-  public static $totalExpense;
+  public static $totExpense;
 
   public function __construct($name, $location, $tot_employees){
     $this->name = $name;
@@ -25,17 +25,16 @@ class Company {
   public function expense(){
     self::$annualExpense = self::$avg_wage * $this->tot_employees * 12;
     echo "La spesa annuale dell'azienda $this->name è uguale a " . self::$annualExpense."\n";
-    $this->totalExpense(self::$annualExpense);
+    $this->totCompanyExpense(self::$annualExpense);
   }
 // metodo per tenere aggiornata la somma totale delle spese
-  public function totalExpense($annualExpense){
-    self::$totalExpense += self::$annualExpense;
+  public function totCompanyExpense($annualExpense){
+    self::$totExpense += self::$annualExpense;
   }
 // metodo statico per calcolare il totale delle spese di tutte le aziende
   public static function totExpense(){
-    
-    echo "La somma totale annuale delle aziende è" ." ". self::$totalExpense;
-    self::$totalExpense = 0;
+    echo "La somma totale annuale delle aziende è" ." ". self::$totExpense;
+    self::$totExpense = 0;
   }
 }
 
